@@ -152,9 +152,61 @@ ON E.department_code = D.department_code
 WHERE E.department_code = 'A';
 
 -- 부서명이 영업부인 사원에 대해 사번, 이름 나이를 조회하시오
-SELECT 
-FROM employee E
-RIGHT OUTER JOIN department D
-ON 
+SELECT E.employee_number '사번', E.name '이름', E.age '나이'
+FROM department D
+LEFT OUTER JOIN employee E
+ON D.department_code = E.department_code
+WHERE D.name = '영업부';
+
+-- SUBQUERRY(서브 쿼리) : 쿼리 내부에 존재하는 또 다른 쿼리, 쿼리 결과를 조건이나 테이블로 사용할 수 있도록 함
+
+-- WHERE 절에서 서브쿼리 : 조회 결과를 조건으로 사용하여 조건을 동적으로 지정할 수 있도록 함
+-- WHERE 절에서 비교 연산 등으로 사용할 대 서브 쿼리의 결과 컬럼 수 및 레코드 수 주의
+
+-- WHERE 조건에서 서브쿼리를 사용할 땐 일반적으로 해당 서브쿼리의 결과 컬럼은 1개가 와야함
+-- 연산자에 따라 레코드의 개수를 잘 확인해야 함
+SELECT employee_number '사번', name '이름', age '나이'
+FROM employee
+WHERE department_code = (
+	SELECT department_code
+    FROM department
+    WHERE name = '영업부'
+);
+   
+SELECT employee_number '사번', name '이름', age '나이'
+FROM employee
+WHERE department_code IN (
+	SELECT department_code
+    FROM department
+    WHERE name = '영업부'
+);
+    
+-- FROM 절에서 서브쿼리 : 조희 결과 테이블을 다시 FROM 절에서 재사용
+SELECT *
+FROM employee E INNER JOIN dpartment D
+ON E.department_code = D.department_code;
+
+SELECT *
+FROM employee E INNER JOIN(
+	SELECT * FROM department WHERE name = '영업부'
+) D
+ON E.department_code = D.department_code;
+
+-- 3개 이상의 테이블을 조인해서 결과를 얻고자 할 때 아주 유용하게 사용됨
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
