@@ -234,3 +234,27 @@ WHERE classroom_number IN (
 -- 		ON CRT.student_number = SUB.student_number
 -- 		GROUP BY class_code
 -- 		) SUB2
+
+
+
+-- 7. 전과목 평균 점수가 90점 이상인 학생이 수강중인 교실의 층 및 좌석수를 구하는 쿼리문
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
