@@ -78,3 +78,7 @@ SELECT * FROM teacher_summary;
 -- DROP VIEW 이름
 
 DROP VIEW teacher_summary;
+
+GRANT ALL ON *.* TO 'developer'@'%';
+create user 'lib_developer'@'localhost' identified by 'qwer1234';
+GRANT ALL ON library.* TO 'lib_developer'@'localhost';
