@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            th,
+            td {
+                border: 1px solid orange;
+            }
+        </style>
+    </head>
+    <body>
+        <!--! table : 웹 페이지에 테이블을 나타내기 위한 부모 요소 -->
+        <!--! tr : 테이블의 각 행을 나타내는 요소 -->
+        <!--! th : 테이블의 제목(컬럼) 셀을 표현하는 요소 -->
+        <!--! td : 테이블의 데이터(필드) 셀을 표현하는 요소 -->
+        <table>
+            <tbody>
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>주소</th>
+                </tr>
+                <tr>
+                    <td>홍길동</td>
+                    <td>20</td>
+                    <td>부산광역시</td>
+                </tr>
+                <tr>
+                    <!--? colspan, rowspand 으로 셀 길이 조절 가능-->
+                    <td colspan="2">김철수</td>
+                    <td rowspan="2">서울특별시</td>
+                </tr>
+                <!--? tr, td 작업 시 개수에 유의 -->
+                <tr>
+                    <td>이영희</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+
+        <!--! 테이블의 각 영역을 그룹화하는 thead, tbody, tfoot 요소 존재 -->
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">순 번</th>
+                    <th rowspan="2">품 목</th>
+                    <th colspan="2">`19.5월</th>
+                    <th colspan="2">`20.3월</th>
+                    <th colspan="2">`20.4월</th>
+                    <th colspan="2">`20.5월</th>
+                </tr>
+                <tr>
+                    <th>금 액</th>
+                    <th>증감률</th>
+                    <th>금 액</th>
+                    <th>증감률</th>
+                    <th>금 액</th>
+                    <th>증감률</th>
+                    <th>금 액</th>
+                    <th>증감률</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">총 합</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>
