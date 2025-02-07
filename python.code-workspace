@@ -1,0 +1,14 @@
+{
+    "folders": [
+		{
+			"path": "python"
+		},
+		{
+			"path": "html"
+		}
+	],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "html",
+        "java.compile.nullAnalysis.mode": "automatic"
+    }
+}

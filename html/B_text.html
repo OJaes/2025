@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!--! html 텍스트 요소-->
+        <!--! p 요소 : 하나의 문단을 표현하는 요소-->
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+        <!--? HTML의 태그는 대소문자를 구분하지 않음-->
+        <!--? W3C에서는 소문자를 권장, XHTML에서는 소문자만 사용 가능-->
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+        <!--? HTML은 문법 오류가 없음(닫는 태그를 지정하지 않음)-->
+        <!--? W3C에서는 닫는 태그 필수 권장, XHTML에서는 반드시 닫아야 함-->
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<p> -->
+
+        <!--? HTML은 <,> 기호로 포함된 문자를 HTML 태그로 인식할 수 있음-->
+        <!--? < : &lt;   /   > : &gt; -->
+
+        <!--? HTML은 기본적으로 띄워쓰기를 한 번만 인식-->
+        <!--? 띄워쓰기 강제 표현 : &nbsp;-->
+
+        <!--? HTML은 줄바꿈을 인식하지 않음-->
+        <!--? <br/>로 줄바꿈 가능능
+        -->
+        <p>
+            &lt;내&gt;가 그린 기린 그림은 잘 그린 기린 그림이고 &nbsp;<br />
+            &lt;네&gt;가 그린 기린 그림은 잘 못 그린 기린 그림이다.
+        </p>
+
+        <!--? 내용이 필요없는 요소를 빈 요소, 빈 요소를 표현하는 태그를 빈 태그라 부름-->
+        <!--? br, hr, img, input, audio, video ...-->
+        <!--? 빈 요소는 시작 태그만 존재함-->
+        <!--? W3C에서 빈 요소도 닫음 기호를 표현하기를 권장, XHTML은 닫음 기호를 필수로 요구-->
+        <!--? 빈 요소의 닫음 표시는 시작 태그의 > 기호 앞에 / 를 입력하여 />로 닫음 표시함-->
+
+        <!--! h1~ h6 : 제목을 표시하기 위한 요소-->
+        <h1>h1 제목</h1>
+        <h2>h2 제목</h2>
+        <h3>h3 제목</h3>
+        <h6>h6 제목</h6>
+
+        <!--! strong : 특정 영역(문자, 단어, 문단...)을 강조(굵게)하기 위해 사용하는 요소-->
+        <!-- block 요소(p, h1 등) -->
+        <!-- inline 요소(strong 등) -->
+        <p>부산광역시 부산진구 <strong>중앙대로 668 </strong> 4층</p>
+
+        <!--! em 요소 : 특정 영역(문자, 단어, 문단...)을 강조(italic)하기 위해 사용하는 요소-->
+        <p>부산광역시 부산진구 <em>중앙대로 668 </em> 4층</p>
+        <p>
+            부산광역시 부산진구 <strong><em>중앙대로 668 </em></strong> 4층
+        </p>
+        <p>
+            부산광역시 <em>부산진구 중앙대로 <strong>668</strong> </em> 4층
+        </p>
+    </body>
+</html>
