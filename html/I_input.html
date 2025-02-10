@@ -14,5 +14,102 @@
         <input placeholder="설명글" />
         <!--? name 속성 : input 요소의 데이터 이름 지정 -->
         <input name="variable" />
+        <!--? readonly 속성 : input 요소의 값을 변경할 수 없게 지정 -->
+        <input readonly value="변경불가능" />
+        <!--? disabled 속성 : input 요소를 사용하지 않음으로 지정 -->
+        <input value="사용하지 않음" disabled />
+
+        <form>
+            <!--? readonly는 form에서 사용하고 disabled는 form에서 사용하지 않음 -->
+            <input name="readonly" value="readonly" readonly />
+            <input name="disabled" value="disabled" disabled />
+            <button>제출</button>
+        </form>
+
+        <!--? minlength, maxlength : 최소 최대 길이 -->
+        <form action="">
+            <input name="minlength" minlength="4" />
+            <input name="maxlength" maxlength="8" />
+            <!--? required 속성 : 필수 입력으로 지정하는 속성 -->
+            <input name="required" required />
+            <button>제출</button>
+        </form>
+
+        <!--! type 속성 : 입력 칸의 데이터 또는 입력 방식을 지정하는 속성 -->
+        <!--! text : 기본값, 텍스트의 데이터를 입력할 수 있게 함 -->
+        <input type="text" />
+        <!--? password : 텍스트 데이터를 입력할 수 있으나 가려져서 표현됨 -->
+        <input type="password" />
+
+        <!--? 날짜 및 시간과 관련된 타입은 Firefox 브라우저에서 지원 x -->
+        <!--? date : 날짜를 UI를 통해서 입력 받음 -->
+        <input type="date" />
+        <!--? time : 시간을 UI를 통해서 입력 받음 -->
+        <input type="time" />
+        <!--? datetime-local : 날짜 및 시간을 UI를 통해서 입력 받음 -->
+        <input type="datetime-local" />
+
+        <br />
+        <!--? number : 숫자 입력받는 타입 -->
+        <input type="number" />
+        <!--? minx, max, step -->
+        <input type="number" min="0" max="10" step="3" />
+
+        <!--? range: 숫자의 선택폭에 제한을 주는 타입 -->
+        <input type="range" min="0" max="10" step="3" />
+
+        <br />
+
+        <!--? file : 파일을 입력할 수 있게 하는 타입 -->
+        <!--? accept 속성 : 파일 선택의 제한, 확장자 명으로 지정 -->
+        <input type="file" accept=".jpeg .png" />
+        <input type="file" accept="image/*, .pdf" />
+
+        <!--? color : 색상을 선택할 수 있도록 하는 타입 -->
+        <input type="color" />
+
+        <!--? hidden : 화면에 보이지 않음 -->
+        숨<input type="hidden" />김
+
+        <form>
+            <input name="normal" />
+            <!--? 사용자에게는 데이터를 보여주지 않고 관리하고 싶을 때 사용 -->
+            <input type="hidden" name="hidden" value="hidden" />
+            <button>전송</button>
+        </form>
+
+        <!--? checkbox : 주어진 항목 중 다수를 선택 -->
+        <!--? value를 반드시 기입해야 함 -->
+        <form>
+            <input type="checkbox" value="java" name="skill" />자바
+            <input type="checkbox" value="python" name="skill" />파이썬
+            <!--? checked 속성 : 체크된 상태로 화면에 표시 -->
+            <input type="checkbox" name="skill" value="html" checked /> HTML
+            <button>전송</button>
+        </form>
+
+        <!--? radio : 주어진 리스트 중에 하나 선택 -->
+        <!--? name 속성으로 radio를 그룹화할 수 있음 -->
+        <!--? 그룹화된 요소들 중 하나만 선택 가능, 선택하면 그룹 내에서 취소 불가가 -->
+        <form>
+            <input type="radio" name="a" value="1" />1 <input type="radio" name="a" value="2" />2
+            <input type="radio" name="b" value="3" />3 <input type="radio" name="b" value="4" />4
+        </form>
+
+        <!--! select 요소 : 주어진 리스트 중에 요소를 선택할 수 있는 요소(드롭다운 박스) -->
+        <select>
+            <!--! optgroup 요소 : option 요소를 그룹화하는 요소 -->
+            <optgroup label="과일">
+                <!--! option 요소 : select 에서 선택할 수 있는 옵션을 나타내는 요소 -->
+                <option value="apple">사과</option>
+                <!--? selected : select의 기본값으로 지정 -->
+                <option value="banana" selected>바나나</option>
+                <option value="cacao">카카오</option>
+            </optgroup>
+            <optgroup label="동물">
+                <option value="dog">강아지</option>
+                <option value="cat">고양이</option>
+            </optgroup>
+        </select>
     </body>
 </html>
