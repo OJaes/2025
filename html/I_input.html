@@ -111,5 +111,18 @@
                 <option value="cat">고양이</option>
             </optgroup>
         </select>
+
+        <!--! textarea 요소 : 텍스트를 여러 줄에 걸쳐서 작성할 수 있도록 하는 요소 -->
+        <!--? textarea는 value 속성을 지정하지 않음 -->
+        <!--? rows, cols 속성 : textarea의 기본 크기를 지정할 수 있음 -->
+        <textarea rows="10" cols="4">textarea</textarea>
+
+        <form>
+            <!--? autocomplete 속성 : 자동완성 on/off 처리 가능 -->
+            <input name="auto" autocomplete="off" />
+            <!--? spellcheck 속성 : 맞춤법 검사 -->
+            <textarea name="auto" spellcheck="false"></textarea>
+            <button>제출</button>
+        </form>
     </body>
 </html>
