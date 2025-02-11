@@ -9,7 +9,7 @@ driver.get(URL)
 
 sleep(5)
 
-main_item = []
+main_items = []
 
 recruits_items = driver.find_elements(By.CLASS_NAME,'item_recruit')
 
