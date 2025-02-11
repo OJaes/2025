@@ -51,6 +51,14 @@
 
 ##################################################
 
+from selenium import webdriver
+from time import sleep
+
+driver = webdriver.Chrome()
+driver.get('https://naver.com')
+
+
+
 
 
 ##################################################
@@ -69,8 +77,12 @@
 
 ##################################################
 
-
-
+from selenium.webdriver.common.by import By
+# element = driver.find_element(By.CSS_SELECTOR, '#account > div > p')
+# elements = driver.find_elements(By.TAG_NAME, 'p')
+# print(element.text)
+# for element in elements:
+#     print(element.text)
 ##################################################
 
 # Selenium으로 입력 및 버튼 클릭
@@ -94,6 +106,33 @@
 
 ##################################################
 
+from selenium.webdriver.common.keys import Keys
+import pyperclip
+from selenium.webdriver import ActionChains
+
+login_button = driver.find_element(By.CSS_SELECTOR, '#account > div > a')
+login_button.click()
+
+id_input = driver.find_element(By.ID, 'id')
+pyperclip.copy("ojg001117")
+id_input.click()
+action = ActionChains(driver)
+action.key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
+
+sleep(1)
+
+pw_input = driver.find_element(By.ID, 'pw')
+pyperclip.copy("Relampago!1")
+pw_input.click()
+action = ActionChains(driver)
+action.key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
+
+sleep(1)
+
+pw_input.send_keys(Keys.RETURN)
+
+# login_button = driver.find_element(By.ID, 'log.login')
+# login_button.click()
 
 
 ##################################################
@@ -129,7 +168,8 @@
 
 ##################################################
 
-
+driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
+sleep(10)
 
 ##################################################
 
