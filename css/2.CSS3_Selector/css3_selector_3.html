@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS 선택자 3</title>
+        <style>
+            * {
+                font-size: 24px;
+            }
+
+            /* 가상 클래스 선택자 */
+            /* 요소의 특정한 상태에 따라 선택하고자 할 때 사용, CSS 표준에 지정된 상태만 선택 가능 */
+
+            /* 링크, 동적 선택자 */
+            /* ":link" : 방문하지 않은 링크 선택  */
+            .link:link {
+                color: rgba(0, 0, 0, 0.7);
+            }
+            /* ":visited" : 방문한 링크 선택 */
+            .link:visited {
+                color: rgba(255, 255, 0, 0.5);
+            }
+            /* ":hover" : 요소에 마우스를 올렸을 때 */
+            .action:hover {
+                background-color: rgba(255, 0, 0, 0.5);
+            }
+            /* ":active" : 요소를 클릭했을 때 */
+            .action:active {
+                background-color: rgba(0, 0, 255, 0.5);
+            }
+            /* ":focus" : 요소에 커서가 맞춰져 있을 때 */
+            .action:focus {
+                background-color: rgba(0, 255, 0, 0.5);
+            }
+            /* UI 요소 선택자 */
+            /* ":checked" : 요소가 체크된 상태일 때 */
+            .ui:checked + .label {
+                color: rgba(255, 0, 0, 0.2);
+            }
+            /* ":enabled" : 요소가 사용 가능한 상태일 때 */
+            .ui:enabled + .label {
+                font-weight: 900;
+            }
+            /* ":disabled" : 요소가 사용 불가능한 상태일 때 */
+            .ui:disabled + .label {
+                font-weight: 100;
+            }
+            /* 구조 선택자 */
+            /* ":first-child" : 선택자에 해당하는 요소 중 첫 번째 형제 요소 선택 */
+            .structural:first-child {
+                background-color: burlywood;
+            }
+            /* ":last-child" : 선택자에 해당하는 요소 중 마지막 형제 요소 선택 */
+            .structural:last-child {
+                background-color: cornsilk;
+            }
+            /* 가상 요소 선택자 */
+            /* 요소의 특정 부분을 선택할 때 사용 */
+
+            /* "::first-letter" : 컨텐츠의 첫 글자 */
+            .pseudo1::first-letter {
+                font-size: 40px;
+            }
+            /* "::first-line" : 컨텐츠의 첫 줄 */
+            .pseudo1::first-line {
+                color: cadetblue;
+            }
+            /* "::after" : 컨텐츠의 뒷 부분 선택 */
+            .pseudo2::after {
+                content: '🖐️';
+            }
+            /* "::before" : 컨텐츠의 앞 부분 선택 */
+            .pseudo2::before {
+                content: '👍';
+            }
+            /* "::selection" : 드래그한 컨텐츠를 선택(브라우저에 따라 지원 여부가 다름) */
+            .pseudo2::selection {
+                background-color: rgba(255, 255, 0, 0.5);
+            }
+        </style>
+    </head>
+    <body>
+        <a class="link" href="https://www.whitehouse.gov">The White House</a>
+
+        <hr />
+
+        <div class="action">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+        <a class="action">Action</a>
+        <input class="action" />
+
+        <hr />
+
+        <input class="ui" type="checkbox" checked /> <span class="label">Lorem ipsum</span><br />
+        <input class="ui" type="checkbox" /> <span class="label">Lorem ipsum</span><br />
+        <input class="ui" type="checkbox" disabled /><span class="label">Lorem ipsum</span>
+
+        <hr />
+
+        <div>
+            <div class="structural">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </div>
+            <div class="structural">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </div>
+            <div class="structural">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </div>
+            <div class="structural">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </div>
+            <div class="structural">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </div>
+        </div>
+
+        <hr />
+
+        <div>
+            <p class="pseudo1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod sed velit id malesuada.
+                Quisque nec est risus. Praesent ac vulputate magna. Mauris bibendum lorem dui, porta scelerisque nisi
+                hendrerit id. Vivamus faucibus lacus et tellus tempus, a congue mauris commodo. Vestibulum aliquet
+                finibus urna fringilla volutpat. In urna odio, aliquam sit amet congue nec, dignissim eu libero. Ut quis
+                efficitur enim. Donec pellentesque tellus purus, non iaculis ex tristique ut. Quisque semper mattis
+                ipsum, at tempus ante interdum tempus.
+            </p>
+            <p class="pseudo2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod sed velit id malesuada.
+                Quisque nec est risus. Praesent ac vulputate magna. Mauris bibendum lorem dui, porta scelerisque nisi
+                hendrerit id. Vivamus faucibus lacus et tellus tempus, a congue mauris commodo. Vestibulum aliquet
+                finibus urna fringilla volutpat. In urna odio, aliquam sit amet congue nec, dignissim eu libero. Ut quis
+                efficitur enim. Donec pellentesque tellus purus, non iaculis ex tristique ut. Quisque semper mattis
+                ipsum, at tempus ante interdum tempus.
+            </p>
+        </div>
+    </body>
+</html>

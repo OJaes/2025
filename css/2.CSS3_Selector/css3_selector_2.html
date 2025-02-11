@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS 선택자 2</title>
+        <style>
+            /* 후손 선택자 : '부모선택자 하위선택자'를 사용하여 부모선택자로 선택된 요소 하위에 오는 모든 하위선택자를 선택 */
+            #parents1 h3 {
+                color: rgba(255, 0, 0, 0.5);
+            }
+
+            /* 자식 선택자 : '부모선택자 > 하위선택자'를 사용하여 부모선택자로 선택한 요소 바로 아래에 오는 하위선택자를 선택 */
+            #parents2 > h3 {
+                color: rgba(0, 255, 0, 0.5);
+            }
+
+            /* 인접 형제 선택자 : '선택자1 + 선택자2'를 사용하여 선택자1 바로 다음에 오는 선택자2를 선택 */
+            #sibling1 + #sibling2 {
+                color: rgba(0, 0, 255, 0.5);
+            }
+
+            /* 일반 형제 선택자 : '선택자1 ~ 선택자2'를 사용하여 선택자1 다음에오는 모든 선택자2를 선택 */
+            #sibling1 ~ #sibling3 {
+                color: rgba(0, 0, 150, 0.5);
+            }
+        </style>
+    </head>
+    <body>
+        <h3>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </h3>
+
+        <hr />
+
+        <div id="parents1">
+            <h3>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <h3>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <div>
+                <h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </h3>
+            </div>
+        </div>
+
+        <hr />
+
+        <div id="parents2">
+            <h3>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <h3>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <div>
+                <h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </h3>
+            </div>
+        </div>
+
+        <hr />
+
+        <div id="parents3">
+            <h3 id="sibling1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <h3 id="sibling2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <div>
+                <h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </h3>
+            </div>
+        </div>
+
+        <hr />
+
+        <div id="parents3">
+            <h3 id="sibling1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <h3>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <div id="sibling2">
+                <h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </h3>
+            </div>
+        </div>
+
+        <hr />
+
+        <div id="parents4">
+            <h3 id="sibling1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <h3>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </h3>
+            <div id="sibling3">
+                <h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </h3>
+            </div>
+        </div>
+    </body>
+</html>

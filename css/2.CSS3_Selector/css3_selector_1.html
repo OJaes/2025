@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS 선택자 1</title>
+        <style>
+            /* 
+            선택자 : 
+                - HTML 요소를 특정하여 선택하기 위한 것
+                - 여러 개의 선택자를 연속해서 지정하려면 ','로 구분하여 나열 
+        */
+
+            /* 전체 선택자 : '*'를 사용하여 HTML 모든 요소를 선택 */
+            * {
+                font-size: 24px;
+            }
+
+            /* 태그 선택자 : '태그이름'을 사용하여 특정 태그를 가지는 요소를 선택 */
+            h2 {
+                color: rgba(255, 0, 0, 0.5);
+                font-size: 8px;
+            }
+
+            /* id 선택자 : '#아이디값'을 사용하여 id 속성의 값과 일치하는 요소를 선택 */
+            #color-red {
+                color: rgba(255, 0, 0, 1);
+            }
+
+            /* class 선택자 : '.클래스값'을 사용하여 class 속성값과 일치하는 요소들을 선택 */
+            .color-green {
+                color: rgba(0, 255, 0, 1);
+            }
+
+            /* HTML 태그에서 class 속성 값은 공백을 이용하여 여러 개 동시 지정 가능 */
+            /* 만약 동시에 여러 개의 클래스 스타일을 가지고 있는 요소에 중복되는 스타일 속성이 지정된다면 나중에 지정된 스타일로 적용 */
+            .background-black {
+                background-color: rgba(0, 0, 0, 1);
+                color: rgba(255, 255, 255, 1);
+            }
+
+            /* 속성 선택자 : */
+            /* '선택자[속성]'을 사용하여 특정한 속성을 갖는 요소를 선택 */
+            div[title] {
+                color: rgba(0, 0, 255, 0.5);
+            }
+
+            /* '선택자[속성=값]'을 사용하여 특정한 속성의 값을 갖는 요소를 선택 */
+            div[title='ipsum'] {
+                font-weight: 900;
+            }
+
+            /* '선택자[속성~=값]'을 사용하여 특정한 속성의 값을 단어로 포함하고 있는 요소를 선택 */
+            div[title~='dolor'] {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+
+        <h2>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </h2>
+
+        <h3 id="color-red">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </h3>
+
+        <h3 class="color-green">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </h3>
+
+        <h3 class="color-green background-black">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </h3>
+
+        <div title="Lorem">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+
+        <div title="ipsum">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+
+        <div title="dolor">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+
+        <div title="ipsum dolor">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+    </body>
+</html>
