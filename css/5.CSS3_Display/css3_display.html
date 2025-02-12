@@ -1,109 +1,163 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS display, visibility, opacity 속성</title>
-    <style>
-
-        /*
-            display 속성 : 
-                - 
-                - 
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS display, visibility, opacity 속성</title>
+        <style>
+            /*
+            display 속성 : 화면의 layout 정의에 중요한 역할을 수행하는 속성
+                - blick, inline, inline-block, none, table, flex, grid ...
+                - display 속성값은 상속되지 않음
         */
 
-        /*
+            /*
             block 레벨 요소 : 
-                - 
-                - 
-                - 
-                - 
-                - 
+                - 항상 새로운 라인에서 시작
+                - 부모 요소의 너비 전체에 해당하는 너비를 가짐(width:100%)
+                - width, height, padding, margin 모두 지정 가능
+                - block 요소에 inline 요소를 포함하여 사용할 수 있음
+                - div, p, h, ...
         */
-        
+            .block-1 {
+                display: block;
+                height: 300px;
+                background-color: aquamarine;
+            }
 
-        /*
-            inline 레벨 요소 :
-                - 
-                - 
-                - 
-                - 
-                - 
-                - 
+            .block-2 {
+                display: none;
+                height: 100px;
+                width: 300px;
+                padding: 50px;
+                margin: 50px;
+                background-color: bisque;
+            }
+            /*
+            inline 레벨 요소 : 
+                - 다음 요소가 새로운 라인에서 시작하지 않음, 다음 요소에 붙어서 위치
+                - 컨텐츠의 높이와 너비만큼 크기를 지님
+                - width, height, margin-top, margin-left 속성을 지정할 수 없음
+                - inline 레벨 요소는 뒤에 공백이 있을 경우, 정의하지 않은 빈 공간이 생성됨
+                - inline 레벨 요소는 block 레벨 요소를 포함할 수 없음
+                - span, a, img, ....
         */
-        
+            .inline-1 {
+                display: inline;
+                background-color: burlywood;
 
-        /*
+                width: 500px;
+                height: 500px;
+                padding: 50px;
+                margin: 50px;
+            }
+            /*
             inline-block 레벨 요소 : 
-                - 
-                - 
-                - 
-                - 
-                - 
-                - 
+                - inline 과 block 요소의 특징을 모두 가지고 있음
+                - 컨텐츠의 너비만큼 너비를 가짐, 다음 요소가 붙어서 나타남
+                - width, hegith, padding, margin 속성을 모두 지정 가능
+                - 기본 width 값은 컨텐츠의 너비
+                - inline 요소처럼 요소 뒤에 공백이 존재한다면 지정하지 않은 공간이 생김
         */
-        
+            .inline-block-1 {
+                display: inline-block;
+                background-color: beige;
 
+                width: 200px;
+                height: 200px;
+            }
+            .inline-block-2 {
+                display: inline-block;
+                background-color: chartreuse;
 
+                width: 100px;
+                height: 100px;
+                margin: 50px;
+            }
 
-        /*
-            visibility 속성 : 
-                - visible : 
-                - hidden : 
-                - collapse : 
+            /*
+            visibility 속성 : 요소를 보이게 할지 말지 지정하는 속성
+                - visible : 요소를 보이게 함(기본값)
+                - hidden : 요소를 보이지 않게 함(공간은 존재)
+                - collapse : table에서 행이나 열을 보이지 않게 함
         */
-        
 
+            .visible {
+                visibility: visible;
+            }
+            .hidden {
+                visibility: hidden;
+            }
+            .collapse {
+                visibility: collapse;
+            }
 
-
-        /*
-            opacity 속성 : 
-                - 
-                - 
+            /*
+            opacity 속성 : 투명도 정의
+                - 요소 전체의 투명도를 지정
+                - 0 ~ 1의 값을 가지며 0은 완전 투명, 1은 완전 불투명
         */
-        
+            .opacity {
+                opacity: 0.5;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Display - block</h2>
+        <span class="block-1"
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.</span
+        >
+        <span class="block-2"
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.</span
+        >
 
-    </style>
-</head>
-<body>
+        <hr />
 
-    <h2>Display - block</h2>
-    <span class="block-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-    <span class="block-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-    
-    <hr />
-    
-    <h2>Display - inline</h2>
-    <div class="inline-1">Lorem</div>
-    <div class="inline-1">Lorem</div>
-    
-    <hr />
+        <h2>Display - inline</h2>
+        <div class="inline-1">Lorem</div>
+        <div class="inline-1">Lorem</div>
 
-    <h2>Display - inline-block</h2>
-    <div class="inline-block-1">Lorem</div>
-    <div class="inline-block-2">Lorem</div>
-    
-    <hr />
+        <hr />
 
-    <h2>Visibility</h2>
-    <div class="visible">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-    <div class="hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-    <div style="display:none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-    <table>
-        <tr>
-            <td>A</td>
-            <td>B</td>
-        </tr>
-        <tr class="collapse">
-            <td>C</td>
-            <td>D</td>
-        </tr>
-    </table>
-    
-    <hr />
+        <h2>Display - inline-block</h2>
+        <div class="inline-block-1">Lorem</div>
+        <div class="inline-block-2">Lorem</div>
 
-    <h2>Opacity</h2>
-    <img class="opacity" src="https://flexible.img.hani.co.kr/flexible/normal/970/1454/imgdb/original/2023/0102/20230102502386.jpg" alt="아이유">
+        <hr />
 
-</body>
+        <h2>Visibility</h2>
+        <div class="visible">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+        <div class="hidden">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+        <div style="display: none">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+        <table>
+            <tr>
+                <td>A</td>
+                <td>B</td>
+            </tr>
+            <tr class="collapse">
+                <td>C</td>
+                <td>D</td>
+            </tr>
+        </table>
+
+        <hr />
+
+        <h2>Opacity</h2>
+        <img
+            class="opacity"
+            src="https://flexible.img.hani.co.kr/flexible/normal/970/1454/imgdb/original/2023/0102/20230102502386.jpg"
+            alt="아이유"
+        />
+    </body>
 </html>

@@ -1,53 +1,65 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS 폰트</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS 폰트</title>
 
-    <style>
-
-        /*
-            font-size 속성 : 
+        <style>
+            /*
+            font-size 속성 : 글꼴 크기 지정
         */
+            .font-size {
+                font-size: 2rem;
+            }
 
-
-
-        /*
-            font-family 속성 : 
-                - 
-                - 
+            /*
+            font-family 속성 : 글자체 지정
+                - 글꼴 여러개 지정 가능, 앞의 글꼴부터 순서대로 적용
+                - 브라우저가 동작하는 컴퓨터에 해당 글꼴이 없으면 적용 x
         */
-        
-
-
-        /*
-            font-style 속성 : 
-                - 
-            font-weight 속성 : 
-                - 
+            .font-family {
+                font-family: 'Times New Roman', Times, serif;
+            }
+            /*
+            font-style 속성 : 이탤릭체 지정
+                - normal, italic, oblique
+            font-weight 속성 : 글꼴 굵기
+                - 100~900, normal / bold / lighter / bolder
         */
-        
+            .font-style {
+                font-style: italic;
+            }
+            .font-weight {
+                font-weight: 800;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="font-size">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
 
+        <hr />
 
+        <div class="font-family">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
 
-    </style>
-</head>
-<body>
+        <hr />
 
-    <div class="font-size">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        <div class="font-style">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
 
-    <hr />
-    
-    <div class="font-family">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        <hr />
 
-    <hr />
-    
-    <div class="font-style">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-
-    <hr />
-    
-    <div class="font-weight">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-    
-</body>
+        <div class="font-weight">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+        </div>
+    </body>
 </html>
