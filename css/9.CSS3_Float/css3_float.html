@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS 요소 정렬</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS 요소 정렬</title>
 
-    <style>
-
-        /*
+        <style>
+            /*
             float 속성 : 
-                - 
-                - 
-                - 
-                - 
-                - 
-                - 
+                - 레이아웃 구성시 block 요소의 가로 정렬을 하기 위한 속성
+                - 일반적으로 정렬 flex로 구성하지만 flex를 사용하지 않을 때 float을 사용
+                - 너비를 지정하지 않으면 컨텐츠의 너비로 지정됨
+
+                - none: 지정하지 않음
+                - left: 좌측 정렬
+                - right: 우측 정렬
         */
-        #parent {
-            background-color: rgba(0, 0, 0, 0.2);
-            height: 500px;
-            margin: 0 10px;
-            padding: 10px;
-        }
-        .child {
-            display: inline-block;
-            width: 100px;
-            height: 100px;
-            background-color: rgba(0, 0, 255, 0.5);
-            margin: 20px 20px;
-        }
+            #parent {
+                background-color: rgba(0, 0, 0, 0.2);
+                height: 500px;
+                margin: 0 10px;
+                padding: 10px;
+            }
 
-    </style>
-</head>
-<body>
+            .child {
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+                background-color: rgba(0, 0, 255, 0.5);
+                margin: 20px 20px;
+            }
 
-    <div id="parent">
-        <div class="child float-left">1</div>
-        <div class="child float-right">2</div>
-        <div class="child float-left">3</div>
-        <div class="child float-right">4</div>
-    </div>
-    
-</body>
+            .float-left {
+                float: left;
+            }
+
+            .float-right {
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="parent">
+            <div class="child float-left">1</div>
+            <div class="child float-right">2</div>
+            <div class="child float-left">3</div>
+            <div class="child float-right">4</div>
+        </div>
+    </body>
 </html>

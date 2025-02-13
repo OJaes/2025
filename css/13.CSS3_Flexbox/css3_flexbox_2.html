@@ -1,87 +1,112 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS FlexBox 2</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS FlexBox 2</title>
 
-    <style>
-
-        /*
+        <style>
+            /*
             flex item 속성
         */
 
-        .flex-container { 
-            display: flex; 
-            background-color: rgba(0, 0, 0, 0.4);
-        }
+            .flex-container {
+                display: flex;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
 
-        .flex-item {
-            width: 150px;
-            padding: 25px;
-            text-align: center;
-            border: 1px solid rgba(0, 0, 0, 1);
-        }
+            .flex-item {
+                width: 150px;
+                padding: 25px;
+                text-align: center;
+                border: 1px solid rgba(0, 0, 0, 1);
+            }
 
-        /*
-            order 속성 : 
-                - 
-                - 
+            /*
+            order 속성 : flex item의 배치 순서 지정
+                - 기본 배치 순서 : flex container에 추가된 순서
+                - HTML 코드 변경 없이 노출 순서를 변경할 수 있음
         */
-        
 
+            .flex-order-item-1 {
+                order: 1;
+            }
+            .flex-order-item-2 {
+                order: 2;
+            }
+            .flex-order-item-3 {
+                order: 3;
+            }
+            .flex-order-item-4 {
+                order: 4;
+            }
 
-        /*
-            flex-grow 속성 : 
-                - 
+            /*
+            flex-grow 속성 : flex item에 대한 공간 확대 비율
+                - 기본 값은 0, 음수는 무시
         */
-        
-
-
-        /*
-            flex-shrink 속성 : 
-                - 
+            .flex-grow-item-1 {
+                flex-grow: 1;
+            }
+            .flex-grow-item-2 {
+                flex-grow: 2;
+            }
+            .flex-grow-item-3 {
+                flex-grow: 3;
+            }
+            .flex-grow-item-4 {
+                flex-grow: 4;
+            }
+            /*
+            flex-shrink 속성 : flex item에 대한 공간 축소비율
+                - 1이 기본, 0은 원래 공간 유지, 음수 무시
         */
-        
+            .flex-shrink-item-1 {
+                flex-shrink: 0;
+            }
+            .flex-shrink-item-2 {
+                flex-shrink: 1;
+            }
+            .flex-shrink-item-3 {
+                flex-shrink: 2;
+            }
+            .flex-shrink-item-4 {
+                flex-shrink: 3;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>order</h2>
 
+        <div class="flex-container">
+            <div class="flex-item flex-order-item-2">1</div>
+            <div class="flex-item flex-order-item-4">2</div>
+            <div class="flex-item flex-order-item-1">3</div>
+            <div class="flex-item flex-order-item-3">4</div>
+        </div>
 
-    </style>
+        <hr />
 
-</head>
-<body>
+        <h2>flex-grow</h2>
 
-    <h2>order</h2>
+        <div class="flex-container">
+            <div class="flex-item flex-grow-item-1">1</div>
+            <div class="flex-item flex-grow-item-2">2</div>
+            <div class="flex-item flex-grow-item-3">3</div>
+            <div class="flex-item flex-grow-item-4">4</div>
+        </div>
 
-    <div class="flex-container">
-        <div class="flex-item flex-order-item-2">1</div>
-        <div class="flex-item flex-order-item-4">2</div>
-        <div class="flex-item flex-order-item-1">3</div>
-        <div class="flex-item flex-order-item-3">4</div>
-    </div>
+        <hr />
 
-    <hr />
+        <h2>flex-shrink</h2>
 
-    <h2>flex-grow</h2>
+        <div class="flex-container">
+            <div class="flex-item flex-shrink-item-1">1</div>
+            <div class="flex-item flex-shrink-item-2">2</div>
+            <div class="flex-item flex-shrink-item-3">3</div>
+            <div class="flex-item flex-shrink-item-4">4</div>
+        </div>
 
-    <div class="flex-container">
-        <div class="flex-item flex-grow-item-1">1</div>
-        <div class="flex-item flex-grow-item-2">2</div>
-        <div class="flex-item flex-grow-item-3">3</div>
-        <div class="flex-item flex-grow-item-4">4</div>
-    </div>
-
-    <hr />
-
-    <h2>flex-shrink</h2>
-
-    <div class="flex-container">
-        <div class="flex-item flex-shrink-item-1">1</div>
-        <div class="flex-item flex-shrink-item-2">2</div>
-        <div class="flex-item flex-shrink-item-3">3</div>
-        <div class="flex-item flex-shrink-item-4">4</div>
-    </div>
-
-    <hr />
-    
-</body>
+        <hr />
+    </body>
 </html>
