@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            @font-face {
+                font-family: 'Maple';
+                src: url('../12.CSS3_Web_Font/Maplestory.otf');
+            }
+            body {
+                font-family: 'Maple';
+            }
+            .container {
+                padding-top: 100px;
+                margin: 0px 25%;
+                justify-items: center;
+                align-items: center;
+            }
+            .logo-container {
+                margin-bottom: 20px;
+                display: flex;
+                width: 100%;
+                justify-content: center;
+            }
+            .logo {
+                font-size: 30px;
+                text-decoration: none;
+            }
+            .login-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                width: 70%;
+                height: fit-content;
+                font-size: 15px;
+            }
+            .login-container div {
+                width: 105px;
+                text-align: center;
+                border-bottom: solid rgba(0, 0, 0, 0.2) 1px;
+                padding: 10px;
+            }
+            .login-container div:hover {
+                color: blue;
+            }
+            .input-container {
+                padding-top: 60px;
+                justify-content: center;
+            }
+            .input-container input {
+                border: solid 1px rgba(0, 0, 0, 0.5);
+                display: inline-block;
+                padding: 12px 18px;
+                width: 100%;
+                height: 43px;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="logo-container"><a class="logo" href="https://www.nexon.com/Home/Game">NEXON</a></div>
+            <div class="login-container">
+                <div class="id-login-button"><a>넥슨ID 로그인</a></div>
+                <div class="only-login-button"><a>일회용 로그인</a></div>
+                <div class="QR-login-button"><a>QR 로그인</a></div>
+            </div>
+            <div class="input-container">
+                <input type="text" name="id" placeholder="넥슨ID (아이디 또는 이메일)" />
+                <input type="password" name="pw" placeholder="비밀번호" />
+            </div>
+            <div class="trouble-container"></div>
+            <div class="social-login-container"></div>
+        </div>
+    </body>
+</html>

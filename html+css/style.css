@@ -1,0 +1,247 @@
+@font-face {
+    font-family: 'NEXON Lv2 Gothic';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    color: #17191d;
+    font-family: 'NEXON Lv2 Gothic', sans-serif, serif;
+}
+
+#wrapper {
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 460px;
+    height: 100vh;
+    min-height: 946px;
+}
+
+.footer {
+    height: 48px;
+    text-align: center;
+    font-size: 11px;
+    color: #9fa1a7;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding-top: 120px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+
+.logo-box {
+    height: 20px;
+}
+
+.logo {
+    background-image: url(./images/nexon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    height: 100%;
+}
+
+.tab-container {
+    display: flex;
+    justify-content: center;
+}
+
+.tab-item {
+    box-sizing: border-box;
+    width: 105px;
+    height: 34px;
+
+    border-bottom: 1px solid #e5e8eb;
+    color: #9fa1a7;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    line-height: 34px;
+}
+
+.active {
+    color: #17191d;
+    border-bottom-width: 2px;
+    border-bottom-color: #17191d;
+}
+
+.tab-item:hover {
+    color: #0077ff;
+    cursor: pointer;
+}
+
+.active:hover {
+    color: #17191d;
+}
+
+.input-container {
+    padding-top: 60px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-box {
+    border: 1px solid #e5e8eb;
+    padding: 18px 12px;
+}
+
+.input-box > input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+.input-box input::placeholder {
+    color: #c6c9cd;
+}
+
+.input-box:focus-within {
+    border-color: #0077ff;
+}
+
+.login-check-box {
+    display: flex;
+    color: #666666;
+    font-size: 12px;
+    align-items: center;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding-top: 24px;
+}
+
+.button {
+    padding: 16px 0;
+
+    background-color: #17191d;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #0077ff;
+    cursor: pointer;
+}
+
+.link-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-items {
+    display: flex;
+    gap: 8px;
+}
+
+.link-item {
+    color: #737881;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    font-size: 12px;
+}
+
+.link-item:hover {
+    cursor: pointer;
+    background-color: #0077ff;
+}
+
+.security-link {
+    font-size: 12px;
+    letter-spacing: -0.6px;
+    font-weight: 700;
+    color: #0077ff;
+    align-content: center;
+}
+
+.security-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.security-link-img {
+    background-image: url(./images/security.png);
+    background-repeat: no-repeat;
+    align-content: center;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin: 0 2px -3px 0;
+}
+
+.sns-container {
+    padding-top: 30px;
+}
+
+.sns-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    box-sizing: border-box;
+    height: 40px;
+    border: 1px solid #d2d6e0;
+    border-radius: 2px;
+    padding-left: 8px;
+}
+
+.sns-box:hover {
+    background-color: #ebedf2;
+    cursor: pointer;
+}
+
+.sns-text {
+    font-size: 14px;
+    letter-spacing: -0.4px;
+    font-weight: 600;
+}
+
+.sns-icon {
+    width: 22px;
+    height: 22px;
+
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+
+.facebook {
+    background-image: url(./images/facebook.png);
+    background-repeat: no-repeat;
+}
+
+.google {
+    background-image: url(./images/google.png);
+    background-repeat: no-repeat;
+}
+
+.naver {
+    background-image: url(./images/naver.png);
+    background-repeat: no-repeat;
+}
+
+.apple {
+    background-image: url(./images/apple.png);
+    background-repeat: no-repeat;
+}
