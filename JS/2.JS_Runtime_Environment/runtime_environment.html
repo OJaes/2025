@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Javascript 실행 환경</title>
+
+        <!-- 
+        head 요소 안에 script 요소로 javascript 작성 가능
+        - javascript의 결과가 HTML에 영향을 미칠때
+    -->
+        <script>
+            function buttonClickHandler() {
+                alert('버튼1을 클릭했습니다.');
+            }
+        </script>
+
+        <!-- 외부 javascript를 HTML에 연결 -->
+        <script src="./script.js"></script>
+    </head>
+    <body>
+        <button onclick="buttonClickHandler();">버튼1</button>
+        <button onclick="buttonClickHandler2()">버튼2</button>
+        <button onclick="buttonClickHandler3()">버튼3</button>
+
+        <!--
+        body 요소 내부에서 javascript 작성 가능
+        - javascript의 결과가 HTML에 영향을 미치지 않을때
+    -->
+        <script>
+            function buttonClickHandler2() {
+                alert('버튼2를 클릭했습니다.');
+            }
+        </script>
+    </body>
+</html>
