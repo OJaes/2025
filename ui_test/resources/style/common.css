@@ -1,0 +1,178 @@
+@font-face {
+    font-family: 'NEXON Lv1 Gothic';
+    src: url('../font/NEXONLv1GothicRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    color: #17191d;
+    font-family: 'NEXON Lv1 Gothic', sans-serif, serif;
+}
+
+.header {
+    height: 17px;
+    padding: 7px 14px;
+
+    align-content: center;
+    text-align: center;
+
+    background-color: #17191d;
+
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 460px;
+    min-height: 75vh;
+
+    padding-top: 90px;
+}
+
+.logo-container {
+    height: 20px;
+}
+
+.logo {
+    height: 100%;
+    background-image: url(./images/nexon-logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.tab-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.tab-item {
+    box-sizing: border-box;
+    width: 105px;
+    height: 34px;
+
+    border-bottom: 1px solid #e5e8eb;
+    color: #a0a1a3;
+    padding-bottom: 1px;
+    margin-bottom: 1px;
+
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+    line-height: 34px;
+}
+
+.active {
+    border-bottom: #17191d 2px solid;
+    color: #17191d;
+}
+
+.tab-item:hover {
+    color: #0077ff;
+    cursor: pointer;
+}
+
+.active:hover {
+    color: #17191d;
+}
+
+.input-hint {
+    padding: 40px 0;
+    color: #737881;
+    text-align: center;
+
+    font-size: 11px;
+    letter-spacing: -0.6;
+}
+
+.input-container {
+    display: flex;
+    height: 68px;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.otp-input {
+    width: 200px;
+    height: 18px;
+    padding: 18px 12px;
+    border: 1px solid #e5e8eb;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.otp-input::placeholder {
+    color: #bcbfc1;
+    font-size: 16px;
+}
+
+.login-button-container {
+    padding-top: 18px;
+}
+
+.login-button {
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+
+    background-color: #17191d;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.login-button:hover {
+    background-color: #0077ff;
+    cursor: pointer;
+}
+
+.login-guide-container {
+    margin-top: 68px;
+    border-top: 1px solid #e5e8eb;
+    padding-top: 20px;
+}
+
+.login-guides {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #737881;
+    letter-spacing: -0.6px;
+    font-size: 12px;
+}
+
+.login-guide-link a:hover {
+    color: #0077ff;
+    cursor: pointer;
+}
+
+.login-guide-link a {
+    text-decoration: none;
+    color: #737881;
+}
+
+.login-guide-sequences {
+    padding-top: 10px;
+}
+
+.login-guide-sequence {
+    font-size: 12px;
+    font-weight: 400;
+    color: #9fa1a7;
+    letter-spacing: -0.6px;
+    line-height: 1.67;
+}
+
+.footer {
+    display: flex;
+    padding-top: 32px;
+    height: 80px;
+    text-align: center;
+    font-size: 11px;
+    color: #9fa1a7;
+    justify-content: center;
+    align-items: center;
+}

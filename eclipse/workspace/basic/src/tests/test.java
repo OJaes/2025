@@ -6,23 +6,25 @@ import java.util.Scanner;
 public class test { 
 	
 	public static void main(String[] args) {
-        int result = 0;
-        for (int i = 1; i <= 5; i++) {
-        	System.out.println(i%2);
-            if (i % 2 == 0) {
-                result += i;
-            } else {
-                result -= i;
-            }
-        }
-        System.out.println(result);
+		String a = "342442";
+        System.out.println(a.length());
     }
    
-	public int solution(int[] picks, String[] minerals) {
+	public int solution(int i, int j, int k) {
         int answer = 0;
+        int check = 0;
         
-        
-        
+        while(i < j) {
+        	
+        	check = i;
+        	answer = check % 10 == k ? answer++ : answer;
+        	check /= 10;
+        	while(check < 10) {
+        		answer = check % 10 == k ? answer++ : answer;        		
+        	}
+        	
+        	i++;
+        }
         
         return answer;
     }
