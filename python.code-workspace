@@ -6,6 +6,7 @@
     ],
     "settings": {
         "liveServer.settings.multiRootWorkspaceName": "html",
-        "java.compile.nullAnalysis.mode": "automatic"
+        "java.compile.nullAnalysis.mode": "automatic",
+        "git.ignoreLimitWarning": true
     }
 }
