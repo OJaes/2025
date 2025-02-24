@@ -72,7 +72,26 @@ export default function Component() {
     // 여러가지 자바스크립트 *연산자*를 사용할 수 있음
 
     // - 반드시 하나의 요소만 반환 가능(0개 X, 2개 이상 X)
-    return <div>Component</div>;
+    // 만약 다수의 요소를 반환하고 싶다면 최상단에 부모 요소로 묶어주어야
+
+    // return 바로 뒤에 반환값이 위채해야만 함
+
+    // JSX(TSX)의 규칙
+    // 1. 반드시 하나의 요소를 반환
+    // 2. 모든 태그를 닫아야 함
+    // 3. 속성들을 JSX로 지정딘 이름만 사용 가능(lowerCamelCase)
+    // 4. 주석을 사용할 땐 {js 주석}을 사용
+    return (
+        <>
+            {/*<input className="" />*/}
+            <Component />
+            <Component2 />
+        </>
+    );
+}
+
+function Component2() {
+    return <div>Component2</div>;
 }
 
 // default는 반드시 하나만 사용할 것
