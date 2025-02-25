@@ -1,13 +1,13 @@
-package com.teamname.projectname;
+package com.korIt.projectName;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjectnameApplication {
+public class ProjectNameApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjectnameApplication.class, args);
+		SpringApplication.run(ProjectNameApplication.class, args);
 	}
 
 }

@@ -1,10 +1,10 @@
-package com.teamname.projectname;
+package com.korIt.projectName;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProjectnameApplicationTests {
+class ProjectNameApplicationTests {
 
 	@Test
 	void contextLoads() {

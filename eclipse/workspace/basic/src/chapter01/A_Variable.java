@@ -1,6 +1,6 @@
 package chapter01;
 
-public class A_Variable {
+public class A_Variable { 
 
 	public static void main(String[] args) {
 		
