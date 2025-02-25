@@ -12,13 +12,18 @@ export default function CurlyBraces() {
         ho: '태조',
         age: '73',
     };
+    const inputProp = {
+        type: 'text',
+        placeholder: '리액트 컴포넌트',
+        readonly: false,
+    };
     // 1. 요소의 컨텐츠에 자바스크립트의 표현식 결과를 사용하고자 할 때
     // 2. 주석 처리 - JSX에서는 HTML 주석을 사용할 수 없으므로 JS 주석을 사용해야 함
     // 3. 속성의 값을 지정할 때
     //      - JSX에서 인라인 스타일은 문자열 X, 객체로 표현
     // 4. 배열은 각 요소를 나열하면서 렌더링이 되지만, 객체는 직접 렌더링할 수 없음(하나씩 가능)
     // 5. 선언문, 제어문을 사용할 수 없음음
-
+    // 6. 스프레드 연산자로 객체를 속성에 바로 지정할 수 있음
     return (
         <>
             <h1 style={{ backgroundColor: 'black', color: 'white' }}>제목 : {title}</h1>
@@ -30,6 +35,8 @@ export default function CurlyBraces() {
             </table>
             <div>{arr}</div>
             <div>{object.name}</div>
+            <input type={inputProp.type} placeholder={inputProp.placeholder} readOnly={inputProp.readonly} />
+            <input {...inputProp} />
         </>
     );
 }
