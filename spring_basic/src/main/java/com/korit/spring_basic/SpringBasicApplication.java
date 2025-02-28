@@ -18,7 +18,7 @@ public class SpringBasicApplication {
 
 		lombok.getField1();
 		lombok.getField2();
-		lombok.isField3(); // 기본형 boolean은 get이 아닌 is 사용용
+		lombok.isField3(); // 기본형 boolean은 get이 아닌 is 사용 
 		lombok.getField4();
 
 		lombok2.setField3(false);
