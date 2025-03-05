@@ -6,12 +6,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.korit.spring_basic.dto.GetUserResponseDto;
 import com.korit.spring_basic.dto.PostUserRequestDto;
 import com.korit.spring_basic.dto.ResponseDto;
 import com.korit.spring_basic.service.UserService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/user")
@@ -28,5 +35,18 @@ public class UserController {
         
         return userService.postUser(requestBody);
     }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<? super GetUserResponseDto> getUser(@PathVariable("userId") String userId) {
+        
+        ResponseEntity<? super GetUserResponseDto> response = userService.getUser(userId);
+        return response;
+
+    }
     
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<ResponseDto> deleteUser(@PathVariable("userId") String userId){
+        ResponseEntity<ResponseDto> response = userService.deleteUser(userId);
+        return response;
+    }
 }

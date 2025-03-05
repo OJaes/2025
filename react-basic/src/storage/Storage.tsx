@@ -53,7 +53,7 @@ export default function Storage() {
     };
 
     const onRemoveStroage = () => {
-        // localStorage 에서 key값을 삭제제
+        // localStorage 에서 key값을 삭제
         localStorage.removeItem(storageKey);
     };
 
