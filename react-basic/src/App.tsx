@@ -3,7 +3,6 @@ import Component, { ClassComponent, FunctionalComponent } from './component/Comp
 import './App.css';
 import CurlyBraces from './component/CurlyBraces';
 import Properties from './component-manage/Properties';
-import Gallery from './component-manage/example/Example1';
 import Profile from './component-manage/example/Example2';
 import ConditionRender from './component-manage/ConditionRender';
 import ListRender from './component-manage/ListRender';
@@ -19,6 +18,8 @@ import QueryString from './router/QueryString';
 import PathVariable from './router/PathVariable';
 import Zustand from './zustand/Zustand';
 import Storage from './storage/Storage';
+import Cookie from './storage/Cookie';
+import Axios from './axios/Axios';
 
 // react-router 패키지:
 // - React의 SPA(Single Page Application)에서 라우팅을 구현하기 위한 라이브러리
@@ -36,18 +37,17 @@ import Storage from './storage/Storage';
 // - path 속성 : URL 패턴 지정
 // - element 속성 : 렌더링할 컴포넌트를 지정
 // - index 속성 : 현재 경로의 기본 라우터로 지정
-
 function InteractionLayout() {
     // useLocation :
-    // 현재 경로에 대한 객체를 반환하는 react-router의 훅 함수
+    // - 현재 경로에 대한 객체를 반환하는 react-router의 훅 함수
     // - pathname 속성 : 현재 path를 가지고 있는 속성
     const { pathname } = useLocation();
-    console.log(pathname);
 
-    // <Outlet/> : 부모 <Route/>에 해당 컴포넌트가 element로 등록되었을 때 자식 <route/>의 element가 해당 위치에 렌더링 되도록 하는 컴포넌트
+    // <Outlet> : 부모 <Route>에 해당 컴포넌트가 element로 등록되었을 때
+    //            자식 <Route>의 element가 해당 위치에 렌더링 되도록하는 컴포넌트
     return (
         <div>
-            <div style={{ backgroundColor: 'blue', height: '150px' }}>상호작용</div>
+            <div style={{ backgroundColor: 'blue', height: '150px' }}>상호작용 {pathname}</div>
             <Outlet />
             <div style={{ backgroundColor: 'red', height: '150px' }}>푸터</div>
         </div>
@@ -70,11 +70,18 @@ function App() {
             <Route path={'/router'}>
                 <Route path={'path-move'} element={<PathMove />} />
                 <Route path={'query-string'} element={<QueryString />} />
-                <Route path={'path-variable/:name/:age'} element={<PathVariable />} />
+                <Route path={'path-variable/:name'} element={<PathVariable />} />
             </Route>
 
             <Route path={'/zustand'} element={<Zustand />} />
-            <Route path={'/storage'} element={<Storage />} />
+
+            <Route path={'/storage'}>
+                <Route index element={<Storage />} />
+                <Route path={'cookie'} element={<Cookie />} />
+            </Route>
+
+            <Route path={'/axios'} element={<Axios />} />
+
             <Route path={'*'} element={<h1>404!</h1>} />
         </Routes>
     );

@@ -33,7 +33,7 @@ public class RequestDataController {
     @RequestParam("name") String name,
     @RequestParam(name="age", required=false) Integer age
   ) {
-    return "이름 : " + name + " 나이 : " + age;
+    return "이름 : " + name + ", 나이 : " + age;
   }
 
   // @PathVariable() : request의 url 패턴에 따라 데이터를 추출하는 방법
