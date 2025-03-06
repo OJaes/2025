@@ -20,6 +20,8 @@ public interface UserRepository extends JpaRepository<UserEntity, String>{
     UserEntity findByUserId(String userId);
     UserEntity findByUserTelNumber(String userTelNumber);
 
+    List<UserEntity> findByOrderByUserIdAsc();
+
     boolean existsByUserId(String userId);
     boolean existsByUserTelNumber(String userTelNumber);
 

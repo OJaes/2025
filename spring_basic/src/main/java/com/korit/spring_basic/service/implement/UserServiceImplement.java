@@ -9,10 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.korit.spring_basic.dto.GetUserResponseDto;
+import com.korit.spring_basic.dto.PatchUserRequestDto;
 import com.korit.spring_basic.dto.PostUserRequestDto;
 import com.korit.spring_basic.dto.ResponseDto;
 import com.korit.spring_basic.entity.UserEntity;
 import com.korit.spring_basic.repository.UserRepository;
+import com.korit.spring_basic.dto.GetUserListResponseDto;
 import com.korit.spring_basic.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -116,6 +118,35 @@ public class UserServiceImplement implements UserService{
         }
         return ResponseDto.success(HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<? super GetUserListResponseDto> getUserList() {
+        List<UserEntity> userEntities = new ArrayList<>();
+
+        try {
+            userEntities = userRepository.findByOrderByUserIdAsc();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+        return GetUserListResponseDto.success(userEntities);
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> patchUser(String userId, PatchUserRequestDto dto) {
+        try {
+            UserEntity userEntity = userRepository.findByUserId(userId);
+            if(userEntity == null) return ResponseDto.noExistUser();
+            userEntity.patch(dto);
+            userRepository.save(userEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+        return ResponseDto.success(HttpStatus.OK);
+    }
         
+    
+
     }
     
