@@ -80,7 +80,7 @@ public class JwtProvider {
     Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 
     try {
-
+      // key 파싱
       claims = Jwts.parserBuilder()
         .setSigningKey(key)
         .build()
