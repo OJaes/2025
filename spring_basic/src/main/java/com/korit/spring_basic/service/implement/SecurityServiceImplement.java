@@ -5,8 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.korit.spring_basic.dto.SignInRequestDto;
 import com.korit.spring_basic.dto.SignUpRequestDto;
 import com.korit.spring_basic.entity.UserEntity;
+import com.korit.spring_basic.provider.JwtProvider;
 import com.korit.spring_basic.repository.UserRepository;
 import com.korit.spring_basic.service.SecurityService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class SecurityServiceImplement implements SecurityService{
 
     private final UserRepository userRepository;
+    private final JwtProvider jwtProvider;
     // PasswordEncoder 인터페이스:
     // - 비밀번호를 쉽고 안전하게 암호화하여 관리할 수 있도록 도움을 주는 인터페이스
     // - 구현체 : BCryptPasswordEncoder, SCryptPasswordEncoder, Pbkdf2PasswordEncoder
@@ -51,6 +54,30 @@ public class SecurityServiceImplement implements SecurityService{
         }
 
         return ResponseEntity.status(HttpStatus.CREATED).body("성공");
+    }
+
+    @Override
+    public ResponseEntity<String> signIn(SignInRequestDto dto) {
+
+        String token;
+
+        try {
+            String userId = dto.getUserId();
+            UserEntity userEntity = userRepository.findByUserId(userId);
+            if(userEntity == null) return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("로그인 정보가 일치하지 않습니다.");
+
+            String userPassword = dto.getUserPassword();
+            String encodedPassword = userEntity.getUserPassword();
+            boolean isMatch = passwordEncoder.matches(userPassword, encodedPassword);
+            if(!isMatch) return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("로그인 정보가 일치하지 않습니다.");
+
+            token = jwtProvider.create(userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("데이터베이스 오류");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(token);
     }
     
 }

@@ -20,6 +20,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.korit.spring_basic.filter.JwtAuthenticationFilter;
+import com.korit.spring_basic.handler.OAuth2SuccessHandler;
+import com.korit.spring_basic.service.implement.OAuth2UserServiceImplement;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,6 +42,8 @@ import lombok.RequiredArgsConstructor;
 public class WebSecurityConfig {
     
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final OAuth2UserServiceImplement oAuth2UserService;
+    private final OAuth2SuccessHandler auth2SuccessHandler;
 
     // Web Security 설정을 지정하는 메서드
     // @Bean :
@@ -87,13 +91,24 @@ public class WebSecurityConfig {
         // permitAll(): 모든 클라이언트가 접근할 수 있도록 지정
         // authenticated() : 인증된 모든 클라이언트가 접근할 수 있도록 지정
         // hasRole(권한) : 권한을 가진 클라이언트만 접근할 수 있도록 지정(매개변수로 전달하는 권한명은 ROLE_를 제외한 실제 권한명)
-        .requestMatchers("/basic", "/basic/**", "/security", "/security/**").permitAll() //url 패턴
+        .requestMatchers("/basic", "/basic/**", "/security", "/security/**", "/oauth2/**").permitAll() //url 패턴
         .requestMatchers(HttpMethod.PATCH).authenticated() // http 메서드
         .requestMatchers(HttpMethod.POST, "/user", "/user/**").hasRole("USER")
         // anyRequest(): 나머지 모든 요청에 대한 처리
-        .anyRequest().authenticated()
         )
+        //oauth2 인증 처리
+        .oauth2Login(oauth2 -> oauth2
+        // 사용자가 oauth2 인증을 위한 요청 URL 지정
+            .authorizationEndpoint(endPoint -> endPoint.baseUri("/security/sns"))
+            // http://localhost:8080/security/sns/github
 
+            // OAUTH2 인증 완료 후 인증 서버에서 들어오는 URL 지정정
+            .redirectionEndpoint(endPoint -> endPoint.baseUri("/oauth2/callback/*"))
+            // OAUTH2 인증 완료 후 사용자 정보를 처리할 서비스 지정
+            .userInfoEndpoint(endPoint -> endPoint.userService(oAuth2UserService))
+            // OAUTH2 서비스 처리 후 성공시 실행할 기능능
+            .successHandler(auth2SuccessHandler))
+        // http://localhost:8080/oauth2/authrization/github
         //!
         // 인증 및 인가 과정에서 발생한 예외를 직접 처리
         .exceptionHandling(exception -> exception.authenticationEntryPoint(new FailedAuthenticationEntryPoint()))
