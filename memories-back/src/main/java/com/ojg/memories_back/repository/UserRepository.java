@@ -9,6 +9,7 @@ import com.ojg.memories_back.common.entity.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, String>{
     
     boolean existsByUserId(String userId);
-
+    
+    UserEntity findByUserId(String userId);
 
 }
