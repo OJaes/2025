@@ -1,5 +1,11 @@
 package com.ojg.memories_back.common.entity;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import com.ojg.memories_back.common.dto.request.diary.PatchDiaryRequestDto;
+import com.ojg.memories_back.common.dto.request.diary.PostDiaryRequestDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,4 +32,24 @@ public class DiaryEntity {
     private String feeling;
     private String title;
     private String content;
+
+
+    public DiaryEntity(PostDiaryRequestDto dto, String userId){
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.userId = userId;
+        this.writeDate = now.format(dateTimeFormatter);
+        this.weather = dto.getWeather();
+        this.feeling = dto.getFeeling();
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
+    }
+    
+    public void patch(PatchDiaryRequestDto dto) {
+        this.weather = dto.getWeather();
+        this.feeling = dto.getFeeling();
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
+        
+    }
 }

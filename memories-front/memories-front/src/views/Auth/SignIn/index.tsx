@@ -1,15 +1,16 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import './style.css';
 import { useCookies } from 'react-cookie';
+
 import { AuthPage } from 'src/types/aliases';
-import InputBox from 'src/Components/InputBox';
-import { signInRequest } from 'src/apis';
+import { signInRequest, SNS_SIGN_IN_URL } from 'src/apis';
 import { SignInRequestDto } from 'src/apis/dto/request/auth';
-import { request } from 'http';
-import { ResponseDto } from 'src/apis/dto/response';
 import { SignInResponseDto } from 'src/apis/dto/response/auth';
+import { ResponseDto } from 'src/apis/dto/response';
+
+import './style.css';
 import { useNavigate } from 'react-router';
 import { ACCESS_TOKEN, MAIN_ABSOLUTE_PATH, ROOT_PATH } from 'src/constants';
+import InputBox from 'src/Components/InputBox';
 
 // interface: 로그인 컴포넌트 속성 //
 interface Props {
@@ -20,8 +21,8 @@ interface Props {
 export default function SignIn(props: Props) {
     const { onPageChange } = props;
 
-    // state:cookie 상태 //
-    const [_, setCookies] = useCookies();
+    // state: cookie 상태 //
+    const [_, setCookie] = useCookies();
 
     // state: 유저 아이디 상태 //
     const [userId, setUserId] = useState<string>('');
@@ -38,11 +39,11 @@ export default function SignIn(props: Props) {
     // function: sign in response 처리 함수 //
     const signInResponse = (responseBody: SignInResponseDto | ResponseDto | null) => {
         const message = !responseBody
-            ? '서버에 문제가 있습니다.'
+            ? '서버에 문제가 있습니다'
             : responseBody.code === 'DBE'
-            ? '서버에 문제가 있습니다.'
+            ? '서버에 문제가 있습니다'
             : responseBody.code === 'SF'
-            ? '로그인 정보가 일치하지 않습니다.'
+            ? '로그인 정보가 일치하지 않습니다'
             : '';
 
         const isSuccess = responseBody !== null && responseBody.code === 'SU';
@@ -50,9 +51,11 @@ export default function SignIn(props: Props) {
             setUserPasswordMessage(message);
             return;
         }
+
         const { accessToken, expiration } = responseBody as SignInResponseDto;
         const expires = new Date(Date.now() + expiration * 1000);
-        setCookies(ACCESS_TOKEN, accessToken, { path: ROOT_PATH, expires });
+        setCookie(ACCESS_TOKEN, accessToken, { path: ROOT_PATH, expires });
+
         navigator(MAIN_ABSOLUTE_PATH);
     };
 
@@ -83,7 +86,7 @@ export default function SignIn(props: Props) {
 
     // event handler: sns 로그인 버튼 클릭 이벤트 처리 //
     const onSnsButtonClickHandler = (sns: 'kakao' | 'naver') => {
-        window.location.href = `http://localhost:4000/api/v1/auth/sns/${sns}`;
+        window.location.href = SNS_SIGN_IN_URL(sns);
     };
 
     // effect: 아이디 혹은 비밀번호 변경시 실행할 함수 //
