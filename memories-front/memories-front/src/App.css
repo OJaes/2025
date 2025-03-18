@@ -14,7 +14,7 @@
     --Primary: rgba(0, 132, 255, 1);
     --Second: rgba(0, 132, 255, 0.1);
     --Error: rgba(255, 84, 64, 1);
-    --Biege: rgba(247, 247, 247, 1);
+    --Beige: rgba(240, 240, 240, 1);
 }
 
 body {
@@ -44,6 +44,11 @@ body {
 .button.fullwidth {
     box-sizing: border-box;
     width: 100%;
+}
+
+.button.middle {
+    box-sizing: border-box;
+    width: 144px;
 }
 
 .button.disable {
@@ -82,6 +87,6 @@ body {
 }
 
 .link:hover {
-    color: grey;
+    color: var(--Lightmode-Grey);
     font-weight: 600;
 }

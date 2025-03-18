@@ -3,6 +3,9 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import { IdCheckRequestDto, SignInRequestDto, SignUpRequestDto } from './dto/request/auth';
 import { ResponseDto } from './dto/response';
 import { SignInResponseDto } from './dto/response/auth';
+import { PatchDiaryRequestDto, PostDiaryRequestDto } from './dto/request/diary';
+import { ACCESS_TOKEN } from 'src/constants';
+import { GetDiaryResponseDto, GetMyDiaryResponseDto } from './dto/response/diary';
 
 // variable: URL 상수 //
 const API_DOMAIN = process.env.REACT_APP_API_DOMAIN;
@@ -13,6 +16,16 @@ const ID_CHECK_URL = `${AUTH_MODULE_URL}/id-check`;
 const SIGN_UP_URL = `${AUTH_MODULE_URL}/sign-up`;
 const SIGN_IN_URL = `${AUTH_MODULE_URL}/sign-in`;
 export const SNS_SIGN_IN_URL = (sns: 'kakao' | 'naver') => `${AUTH_MODULE_URL}/sns/${sns}`;
+
+const DIARY_MODULE_URL = `${API_DOMAIN}/api/v1/diary`;
+const POST_DIARY_URL = `${DIARY_MODULE_URL}/`;
+const GET_MY_DIARY_URL = `${DIARY_MODULE_URL}/my`;
+const GET_DIARY_URL = (diaryNumber: number | string) => `${DIARY_MODULE_URL}/${diaryNumber}`;
+const PATCH_DIARY_URL = (diaryNumber: number | string) => `${DIARY_MODULE_URL}/${diaryNumber}`;
+const DELETE_DIARY_URL = (diaryNumber: number | string) => `${DIARY_MODULE_URL}/${diaryNumber}`;
+
+// function: Authorization Bearer 헤더 //
+const bearerAuthorization = (accessToken: string) => ({ headers: { Authorization: `Bearer ${accessToken}` } });
 
 // function: response 성공 처리 함수 //
 const responseSuccessHandler = <T = ResponseDto>(response: AxiosResponse<T>) => {
@@ -51,6 +64,56 @@ export const signInRequest = async (requestBody: SignInRequestDto) => {
     const responseBody = await axios
         .post(SIGN_IN_URL, requestBody)
         .then(responseSuccessHandler<SignInResponseDto>)
+        .catch(responseErrorHandler);
+    return responseBody;
+};
+
+// function: POST DIARY API 요청 함수 //
+export const postDiaryRequest = async (requestBody: PostDiaryRequestDto, accessToken: string) => {
+    const responseBody = await axios
+        .post(POST_DIARY_URL, requestBody, bearerAuthorization(accessToken))
+        .then(responseSuccessHandler)
+        .catch(responseErrorHandler);
+    return responseBody;
+};
+
+// function: MY DIARY API  요청 함수 //
+export const getMyDiaryRequest = async (accessToken: string) => {
+    const responseBody = await axios
+        .get(GET_MY_DIARY_URL, bearerAuthorization(accessToken))
+        .then(responseSuccessHandler<GetMyDiaryResponseDto>)
+        .catch(responseErrorHandler);
+
+    return responseBody;
+};
+
+// function: get diary API 요청 함수 //
+export const getDiaryRequest = async (diaryNumber: number | string, accessToken: string) => {
+    const responseBody = await axios
+        .get(GET_DIARY_URL(diaryNumber), bearerAuthorization(accessToken))
+        .then(responseSuccessHandler<GetDiaryResponseDto>)
+        .catch(responseErrorHandler);
+    return responseBody;
+};
+
+// function: patch diary API 요청 함수 //
+export const patchDiary = async (
+    diaryNumber: number | string,
+    requestBody: PatchDiaryRequestDto,
+    accessToken: string
+) => {
+    const responseBody = await axios
+        .patch(PATCH_DIARY_URL(diaryNumber), requestBody, bearerAuthorization(accessToken))
+        .then(responseSuccessHandler)
+        .catch(responseErrorHandler);
+    return responseBody;
+};
+
+// function: delete diary API 요청 함수 //
+export const deleteDiary = async (diaryNumber: number | string, accessToken: string) => {
+    const responseBody = await axios
+        .delete(DELETE_DIARY_URL(diaryNumber), bearerAuthorization(accessToken))
+        .then(responseSuccessHandler)
         .catch(responseErrorHandler);
     return responseBody;
 };
