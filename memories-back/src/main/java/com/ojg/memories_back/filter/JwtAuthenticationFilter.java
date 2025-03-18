@@ -75,7 +75,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
                 // description: Request 객체에서 Authrization header 값 추출
                 String authorization = request.getHeader("Authorization");
                 boolean hasAuthorization = StringUtils.hasText(authorization);
-                if(hasAuthorization) return null;
+                if(!hasAuthorization) return null;
                 
                 // description:  Bearer 인증 방식인지 확인 //
                 boolean isBearer = authorization.startsWith("Bearer ");

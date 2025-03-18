@@ -24,17 +24,15 @@ public class AuthServiceImplement implements AuthService {
 
     private final UserRepository userRepository;
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    private JwtProvider jwtProvider;
+    private final JwtProvider jwtProvider;
 
   @Override
   public ResponseEntity<ResponseDto> idCheck(IdCheckRequestDto dto) {
-    
-    boolean existsId;
 
     try {
         String userId = dto.getUserId();
-        existsId = userRepository.existsByUserId(userId);
-        if(existsId){
+        boolean existsUser = userRepository.existsByUserId(userId);
+        if(existsUser){
             return ResponseDto.existUser();
         }
     } catch (Exception e) {
@@ -43,7 +41,7 @@ public class AuthServiceImplement implements AuthService {
     }
 
     return ResponseDto.success(HttpStatus.OK);
-  }
+}
 
 
 @Override

@@ -3,6 +3,9 @@ package com.ojg.memories_back.common.dto.response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import lombok.Getter;
+
+@Getter
 public class SignInResponseDto extends ResponseDto{
     
     private String accessToken;

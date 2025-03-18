@@ -1,7 +1,15 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import './style.css';
+import { useCookies } from 'react-cookie';
 import { AuthPage } from 'src/types/aliases';
 import InputBox from 'src/Components/InputBox';
+import { signInRequest } from 'src/apis';
+import { SignInRequestDto } from 'src/apis/dto/request/auth';
+import { request } from 'http';
+import { ResponseDto } from 'src/apis/dto/response';
+import { SignInResponseDto } from 'src/apis/dto/response/auth';
+import { useNavigate } from 'react-router';
+import { ACCESS_TOKEN, MAIN_ABSOLUTE_PATH, ROOT_PATH } from 'src/constants';
 
 // interface: 로그인 컴포넌트 속성 //
 interface Props {
@@ -12,6 +20,9 @@ interface Props {
 export default function SignIn(props: Props) {
     const { onPageChange } = props;
 
+    // state:cookie 상태 //
+    const [_, setCookies] = useCookies();
+
     // state: 유저 아이디 상태 //
     const [userId, setUserId] = useState<string>('');
     // state: 유저 비밀번호 상태 //
@@ -20,6 +31,30 @@ export default function SignIn(props: Props) {
     const [userIdMessage, setUserIdMessage] = useState<string>('');
     // state: 유저 비밀번호 메세지 상태 //
     const [userPasswordMessage, setUserPasswordMessage] = useState<string>('');
+
+    // function: 네비게이터 함수 //
+    const navigator = useNavigate();
+
+    // function: sign in response 처리 함수 //
+    const signInResponse = (responseBody: SignInResponseDto | ResponseDto | null) => {
+        const message = !responseBody
+            ? '서버에 문제가 있습니다.'
+            : responseBody.code === 'DBE'
+            ? '서버에 문제가 있습니다.'
+            : responseBody.code === 'SF'
+            ? '로그인 정보가 일치하지 않습니다.'
+            : '';
+
+        const isSuccess = responseBody !== null && responseBody.code === 'SU';
+        if (!isSuccess) {
+            setUserPasswordMessage(message);
+            return;
+        }
+        const { accessToken, expiration } = responseBody as SignInResponseDto;
+        const expires = new Date(Date.now() + expiration * 1000);
+        setCookies(ACCESS_TOKEN, accessToken, { path: ROOT_PATH, expires });
+        navigator(MAIN_ABSOLUTE_PATH);
+    };
 
     // event handler: 유저 아이디 변경 이벤트 처리 //
     const onUserIdChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +74,16 @@ export default function SignIn(props: Props) {
         if (!userPassword) setUserPasswordMessage('비밀번호를 입력하세요.');
         if (!userId || !userPassword) return;
 
-        // todo: 로그인 처리 로직 //
+        const requestBody: SignInRequestDto = {
+            userId,
+            userPassword,
+        };
+        signInRequest(requestBody).then(signInResponse);
+    };
+
+    // event handler: sns 로그인 버튼 클릭 이벤트 처리 //
+    const onSnsButtonClickHandler = (sns: 'kakao' | 'naver') => {
+        window.location.href = `http://localhost:4000/api/v1/auth/sns/${sns}`;
     };
 
     // effect: 아이디 혹은 비밀번호 변경시 실행할 함수 //
@@ -85,8 +129,8 @@ export default function SignIn(props: Props) {
             <div className="sns-container">
                 <div className="sns-header">SNS 로그인</div>
                 <div className="sns-button-box">
-                    <div className="sns-button kakao"></div>
-                    <div className="sns-button naver"></div>
+                    <div className="sns-button kakao" onClick={() => onSnsButtonClickHandler('kakao')}></div>
+                    <div className="sns-button naver" onClick={() => onSnsButtonClickHandler('naver')}></div>
                 </div>
             </div>
         </div>
