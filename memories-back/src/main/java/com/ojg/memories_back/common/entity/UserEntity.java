@@ -1,6 +1,8 @@
 package com.ojg.memories_back.common.entity;
 
 import com.ojg.memories_back.common.dto.request.auth.SignUpRequestDto;
+import com.ojg.memories_back.common.dto.request.diary.PatchDiaryRequestDto;
+import com.ojg.memories_back.common.dto.request.user.PatchUserRequestDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -40,4 +42,13 @@ public class UserEntity {
     this.snsId = dto.getSnsId();
   }
 
+  public void patch(PatchUserRequestDto patchUserRequestDto){
+    this.name = patchUserRequestDto.getName();
+    this.profileImage = patchUserRequestDto.getProfileImage();
+    this.address = patchUserRequestDto.getAddress();
+    this.detailAddress = patchUserRequestDto.getDetailAddress();
+    this.gender = patchUserRequestDto.getGender();
+    this.age = patchUserRequestDto.getAge();
+
+  }
 }

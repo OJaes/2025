@@ -49,7 +49,7 @@ public class DiaryServiceImplement implements DiarySerivce {
     public ResponseEntity<? super GetMyDiaryResponseDto> getMyDiary(String userId) {
         List<DiaryEntity> diaryEntities = new ArrayList<>();
         try {
-            diaryEntities = diaryRepository.findByUserId(userId);
+            diaryEntities = diaryRepository.findByUserIdOrderByWriteDateDesc(userId);
             
         } catch (Exception e) {
             e.printStackTrace();
