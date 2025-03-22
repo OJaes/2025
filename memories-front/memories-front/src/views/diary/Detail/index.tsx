@@ -84,7 +84,6 @@ export default function DiaryDetail() {
         }
 
         const { writerId, writeDate, weather, feeling, title, content } = responseBody as GetDiaryResponseDto;
-
         setWriterId(writerId);
         setWriteDate(writeDate);
         setWeather(weather);
@@ -139,11 +138,10 @@ export default function DiaryDetail() {
             navigator(DIARY_ABSOLUTE_PATH);
             return;
         }
-
         getDiaryRequest(diaryNumber, accessToken).then(getDiaryResponse);
     }, []);
 
-    // effect: 로그인 유저 아이디와 작성자 아이디가 변경될 시 실행할 함수 //
+    // effect: 로그인 유저 아이디와 작성자 아이디가 변경될시 실행할 함수 //
     useEffect(() => {
         if (writerId && userId && writerId !== userId) {
             alert('권한이 없습니다.');

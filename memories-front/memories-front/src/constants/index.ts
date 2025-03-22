@@ -12,7 +12,6 @@ export const DIARY_VIEW_PATH = ':diaryNumber';
 export const DIARY_UPDATE_PATH = 'update';
 export const OTHERS_PATH = '*';
 
-// 상대, 절대를 나누는 이유는 파일 경로 수정 시 생길 문제를 예방하기 위함함
 // variable: 절대 path 상수 //
 export const ROOT_ABSOLUTE_PATH = ROOT_PATH;
 export const AUTH_ABSOLUTE_PATH = `${ROOT_PATH}${AUTH_PATH}`;
@@ -27,9 +26,13 @@ export const DIARY_VIEW_ABSOLUTE_PATH = (diaryNumber: number | string) => `${ROO
 export const DIARY_UPDATE_ABSOLUTE_PATH = (diaryNumber: number | string) =>
     `${ROOT_PATH}${DIARY_PATH}/${diaryNumber}/${DIARY_UPDATE_PATH}`;
 
-// variable: access token 속성명
+// variable: access token 속성명 //
 export const ACCESS_TOKEN = 'accessToken';
-// variable: join type 속성명
+// variable: join type 속성명 //
 export const JOIN_TYPE = 'joinType';
-// variable: sns id 속성명
+// variable: sns id 속성명 //
 export const SNS_ID = 'snsId';
+
+// variable: 기억력 검사 설명 //
+export const MEMORY_DESCRIPTION =
+    '16개의 뒤집혀진 카드의 앞면을 기억하여\n동일한 앞면의 카드 두 개를 연속해서 뒤집어\n모두 앞면으로 돌리면 성공입니다.\n검사 시작부터 모두 돌리는데 까지 걸린 시간을 측정합니다.';

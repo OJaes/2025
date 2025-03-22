@@ -7,16 +7,16 @@ import org.springframework.http.ResponseEntity;
 
 import com.ojg.memories_back.common.dto.response.auth.ResponseDto;
 import com.ojg.memories_back.common.entity.DiaryEntity;
-import com.ojg.memories_back.common.vo.DiaryVo;
+import com.ojg.memories_back.common.vo.DiaryVO;
 
 import lombok.Getter;
 
 @Getter
 public class GetMyDiaryResponseDto extends ResponseDto{
-    private List<DiaryVo> diaries;
+    private List<DiaryVO> diaries;
     
     private GetMyDiaryResponseDto(List<DiaryEntity> diaryEntities){
-        this.diaries = DiaryVo.getList(diaryEntities);
+        this.diaries = DiaryVO.getList(diaryEntities);
     }
 
     public static ResponseEntity<GetMyDiaryResponseDto> success(List<DiaryEntity> diaryEntities){
